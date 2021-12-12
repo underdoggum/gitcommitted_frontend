@@ -32,9 +32,9 @@ const Timeslots = ({ timeblocks }) => {
         <h3 style={time.getHours() === 16 ? highlighted : null}>4:00pm - 5:00pm: <Timeblock timeblock={timeblocks[3]} /></h3>
       </div>
     )
-  } else if (timeblocks && (time.getHours() < 8 || time.getHours > 16)) {
+  } else if (timeblocks && (time.getHours() < 8 || time.getHours() > 16)) {
     return (
-      <h1>Take it easy! Keep your life balanced, and enjoy your evening!</h1>
+      <h1>Take it easy!<br /><br />Dive into your favorite book, learn a new skill, or have fun with some friends. Keep your life balanced, and enjoy your time off!</h1>
     )
   } else {
     return (
