@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Modal, Button, Box, Typography } from "@mui/material";
 
 
@@ -35,8 +36,10 @@ const Header = props => {
 
   return(
     <header>
-      <h1 style={h1}>Git Committed</h1>
-      <h4 style={{marginTop: "0", marginBottom: "1rem"}}>Stay on track. Land that dream job.</h4>
+      <Link style={{textDecoration: "none", color: "inherit"}} to="/">
+        <h1 style={h1}>Git Committed</h1>
+        <h4 style={{marginTop: "0", marginBottom: "1rem"}}>Stay on track. Land that dream job.</h4>
+      </Link>
 
       <Button style={button} onClick={handleOpen}>Useful Tips</Button>
       <Modal
