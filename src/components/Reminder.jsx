@@ -1,22 +1,29 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 const Reminder = ({ reminder }) => {
   //////////////////
   // Style Objects
   //////////////////
-  const div = {
+  const ul = {
     textAlign: "center",
-    border: "3px solid",
+    width: "fit-content",
+  };
+  const div = {
+    width: "40%",
+    minWidth: "300px",
     margin: "10px auto",
-    width: "80%",
   };
 
   return (
     <div style={div}>
-      <Link to={`/reminders/${reminder.id}`}>
-      <h1>{reminder.text}</h1>
-      </Link>
+      <ul style={ul}>
+        <li>
+          {/* <Link to={`/reminders/${reminder.id}`}> */}
+            <h4>{reminder.text}</h4>
+          {/* </Link> */}
+        </li>
+      </ul>
     </div>
   )
 }

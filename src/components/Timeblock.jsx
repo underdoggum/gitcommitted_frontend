@@ -2,23 +2,18 @@ import { Link } from "react-router-dom";
 
 
 const Timeblock = ({ timeblock }) => {
-  //////////////////
-  // Style Objects
-  //////////////////
-  const div = {
-    textAlign: "center",
-    border: "3px solid",
-    margin: "10px auto",
-    width: "80%",
-  };
-
-  return (
-    <div style={div}>
+ 
+  if (timeblock) {
+    return (
       <Link to={`/timeblocks/${timeblock.id}`}>
-      <h1>{timeblock.title}</h1>
+        {timeblock.title ? timeblock.title : "Loading..."}
       </Link>
-    </div>
-  )
+    )
+  } else {
+    return (
+      <h1>Loading...</h1>
+    )
+  }
 }
 
 

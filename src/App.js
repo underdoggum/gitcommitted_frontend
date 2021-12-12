@@ -6,14 +6,14 @@ import Form from "./pages/Form";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import MotivationalQuotes from "./components/MotivationalQuotes";
-import Button from "@mui/material/Button";
-import EditIcon from '@mui/icons-material/Edit';
 import SingleTimeblock from "./pages/SingleTimeblock";
+import Footer from "./components/Footer";
+
+import "./App.css"
+import CurrentTime from "./components/CurrentTime";
+
 
 function App() {
-  ////////////////////
-  // Style Objects
-  ////////////////////
   
 
 
@@ -40,8 +40,6 @@ function App() {
   }
 
 
-
-
   //////////////
   // useEffects
   //////////////
@@ -58,14 +56,14 @@ function App() {
     <div className="App">
       <Header />
       <MotivationalQuotes />
-      <Button variant="outlined" startIcon={<EditIcon />}>Edit</Button>
-
+      <CurrentTime />
 
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/timeblocks" element={<AllTimeblocks timeblocks={timeblocks} />} />
         <Route path="/timeblocks/:id" element={<SingleTimeblock timeblocks={timeblocks} reminders={reminders} />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

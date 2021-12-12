@@ -1,14 +1,19 @@
-import Timeblock from "../components/Timeblock";
+import Timeslots from "../components/Timeslots";
+
 
 const AllTimeblocks = ({ timeblocks }) => {
 
-
-  return(
-    <div>
-
-      {timeblocks.map(timeblock => <Timeblock timeblock={timeblock} key={timeblock.id} />)}
-    </div>
-  )
+  if (timeblocks) {
+    return (
+      <div>
+        <Timeslots timeblocks={timeblocks} />
+      </div>
+    )
+  } else {
+    return (
+      <h1>Loading...</h1>
+    )
+  }
 }
 
 
