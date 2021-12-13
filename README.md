@@ -65,6 +65,7 @@ Big shoutout to [Alex Merced](https://meet.alexmercedcoder.com/) for breaking do
 
 ## Extra Features for the Future:
  - More detailed layout as sketched out in [Miro board mockup](https://miro.com/app/board/uXjVObip9M8=/?invite_link_id=290878936725)
+ ![Miro board markup](./src/images/GitCommitted-miro-board.png)
  - Incorporate flash card practice
  - A dashboard layout may be more visually appealing
  - Ability to fully update the timeblocks instead of the static ones pre-determined
