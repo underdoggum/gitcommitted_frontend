@@ -13,7 +13,7 @@ const Reminder = ({ reminder, edit, deleteReminder }) => {
 
   const li = {
     listStyleType: "none",
-    border: "1px solid gray",
+    border: "1px solid rgba(0, 0, 0, 0.125)",
     padding: "2px",
     paddingRight: "0.75rem"
   };
@@ -24,14 +24,14 @@ const Reminder = ({ reminder, edit, deleteReminder }) => {
     margin: "10px auto",
   };
 
-  
+
   return (
     <div style={div}>
       <ul style={ul}>
         <li style={li}>
           {/* <Link to={`/reminders/${reminder.id}`}> */}
           <Button color="secondary" onClick={event => edit(reminder)}>Edit</Button>
-          <Button color="error" onClick={event => deleteReminder(reminder)}>DELETE</Button>
+          <Button color="error" style={{marginRight: "1rem"}} onClick={event => deleteReminder(reminder)}>DELETE</Button>
           {reminder.text}
           {/* </Link> */}
         </li>
