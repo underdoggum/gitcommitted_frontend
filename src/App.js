@@ -1,10 +1,9 @@
 import Header from "./components/Header";
 import Welcome from "./pages/Welcome";
 import AllTimeblocks from "./pages/AllTimeblocks";
-import AllReminders from "./pages/AllReminders";
 import Form from "./pages/Form";
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import MotivationalQuotes from "./components/MotivationalQuotes";
 import SingleTimeblock from "./pages/SingleTimeblock";
 import Footer from "./components/Footer";
@@ -14,8 +13,7 @@ import CurrentTime from "./components/CurrentTime";
 
 
 function App() {
-  
-
+  const navigate = useNavigate();
 
   ///////////////
   // State & Other Variables
@@ -24,10 +22,18 @@ function App() {
   const [timeblocks, setTimeblocks] = useState([]);
   const [reminders, setReminders] = useState([]);
 
+  // null Reminder
+  const nullReminder = {
+    category: 1,
+    text: ""
+  }
+  
+  const [targetReminder, setTargetReminder] = useState(nullReminder);
 
   //////////////
   // Functions
   //////////////
+  // Get
   const getTimeblocks = async () => {
     const response = await fetch(url + "timeblocks/");
     const data = await response.json();
@@ -39,9 +45,48 @@ function App() {
     setReminders(data);
   }
 
+  // Create
+  const addReminders = async (newReminder) => {
+    await fetch(url + "reminders/", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newReminder)
+    });
+    getReminders();
+    // navigate("/timeblocks/" + newReminder.category)
+  }
+
+  const getTargetReminder = reminder => {
+    setTargetReminder(reminder);
+    navigate("/edit")
+  }
+
+  // Edit
+  const updateReminder = async reminder => {
+    await fetch(url + "reminders/" + reminder.id, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(reminder)
+    })
+    getReminders();
+    // navigate("/timeblocks/" + reminder.category)
+  }
+
+  // Delete
+  const deleteReminder = async reminder => {
+    await fetch(url + "reminders/" + reminder.id, {
+      method: "delete"
+    })
+    getReminders();
+  }
+
 
   //////////////
-  // useEffects
+  // useEffect
   //////////////
   useEffect(() => {
     getTimeblocks();
@@ -61,7 +106,32 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/timeblocks" element={<AllTimeblocks timeblocks={timeblocks} />} />
-        <Route path="/timeblocks/:id" element={<SingleTimeblock timeblocks={timeblocks} reminders={reminders} />} />
+        <Route path="/timeblocks/:id" element={
+          <SingleTimeblock
+            timeblocks={timeblocks}
+            reminders={reminders}
+            edit={getTargetReminder}
+            deleteReminder={deleteReminder}
+          />}
+        />
+
+        <Route path="/new/:id" element={
+          <Form
+            initialReminders={nullReminder}
+            handleSubmit={addReminders}
+            buttonLabel="Add Reminder"
+          />}
+        />
+
+        <Route path="/edit" element={
+          <Form
+            initialReminders={targetReminder}
+            handleSubmit={updateReminder}
+            buttonLabel="Update"
+          />
+
+        } />
+        
       </Routes>
       <Footer />
     </div>

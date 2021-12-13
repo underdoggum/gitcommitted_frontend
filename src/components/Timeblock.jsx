@@ -5,7 +5,7 @@ const Timeblock = ({ timeblock }) => {
  
   if (timeblock) {
     return (
-      <Link to={`/timeblocks/${timeblock.id}`}>
+      <Link style={{textDecoration: "none", color: "#1976d2", fontWeight: "bold"}} to={`/timeblocks/${timeblock.id}`}>
         {timeblock.title ? timeblock.title : "Loading..."}
       </Link>
     )

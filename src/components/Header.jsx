@@ -10,8 +10,8 @@ const Header = props => {
 
   const button = {
     position: "absolute",
-    top: "0",
-    right: "0"
+    top: "10px",
+    right: "5px"
   };
 
   const box = {
@@ -41,7 +41,7 @@ const Header = props => {
         <h4 style={{marginTop: "0", marginBottom: "1rem"}}>Stay on track. Land that dream job.</h4>
       </Link>
 
-      <Button style={button} onClick={handleOpen}>Useful Tips</Button>
+      <Button style={button} variant="contained" onClick={handleOpen}>Tips</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -55,7 +55,6 @@ const Header = props => {
               <li>Stretch often (hamstrings, wrists/forearms, neck, chest, abs)</li>
               <li>Drink <em>plenty</em> of water</li>
               <li>Remember: any progress is good progress</li>
-
             </ul>
           </Typography>
         </Box>

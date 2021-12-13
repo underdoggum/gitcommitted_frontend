@@ -18,8 +18,9 @@ const Timeslots = ({ timeblocks }) => {
     fontWeight: "bold"
   }
 
-
-  if (timeblocks && time.getHours() >= 8 && time.getHours() <= 16) {
+  // add the below back into the if statement when done
+// && time.getHours() >= 8 && time.getHours() <= 16
+  if (timeblocks ) {
     return (
       <div>
         <h3 style={time.getHours() === 8 ? highlighted : null}>8:00am - 8:50am: <Timeblock timeblock={timeblocks[0]} /></h3>
