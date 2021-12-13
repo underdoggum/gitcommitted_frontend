@@ -18,6 +18,7 @@ const Form = ({ initialReminders, handleSubmit, buttonLabel }) => {
     event.preventDefault();
     handleSubmit(formData);
     navigate("/timeblocks")
+    // Note: "formData.category" below returns "NaN" when trying to route back to relevant timeblock category page
     // navigate("/timeblocks/" + formData.category);
   }
 
